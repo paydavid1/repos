@@ -1,0 +1,5 @@
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1\ETProject.api.csprojAssemblyReference.cache
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1\ETProject.api.csproj.CoreCompileInputs.cache
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1\ETProject.api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1\ETProject.api.AssemblyInfoInputs.cache
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1\ETProject.api.AssemblyInfo.cs

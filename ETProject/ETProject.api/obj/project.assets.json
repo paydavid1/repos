@@ -1178,7 +1178,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.3",
-      "Microsoft.EntityFrameworkCore.Sqlite >= *",
+      "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.3",
       "Microsoft.EntityFrameworkCore.tools >= 3.1.3"
     ]
   },
@@ -1231,7 +1231,7 @@
           },
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[3.1.3, )"
           },
           "Microsoft.EntityFrameworkCore.tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
