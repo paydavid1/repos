@@ -7,6 +7,8 @@ namespace ExpenseTracker.Models
 {
     public class Category
     {
+        public Guid Id { get; set; }
+        public string Descripcion { get; set; }
 
     }
 }
