@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Features\Interfaces\" />
+    <Folder Include="Features\Services\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
