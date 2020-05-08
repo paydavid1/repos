@@ -2,14 +2,16 @@
 using ETProject.api.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ETProject.api.Migrations
 {
     [DbContext(typeof(ETDbContext))]
-    partial class ETDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200508160745_CreateTableCategories")]
+    partial class CreateTableCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

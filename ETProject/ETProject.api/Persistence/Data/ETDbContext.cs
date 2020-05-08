@@ -1,4 +1,5 @@
 using ETProject.api.Features.Category;
+using ETProject.api.Persistence.Maps;
 using Microsoft.EntityFrameworkCore;
 
 namespace ETProject.api.Persistence.Data
@@ -8,9 +9,7 @@ namespace ETProject.api.Persistence.Data
         
         public ETDbContext(DbContextOptions<ETDbContext> options) : base(options) {}
 
-        public DbSet<Category> Categories { get; set; }
-
-        
+        public DbSet<Category> Categories { get; set; }          
 
     }
 }

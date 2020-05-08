@@ -2,14 +2,16 @@
 using ETProject.api.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ETProject.api.Migrations
 {
     [DbContext(typeof(ETDbContext))]
-    partial class ETDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200508155008_DropTableCategories")]
+    partial class DropTableCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,10 +21,13 @@ namespace ETProject.api.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnName("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                        .IsRequired()
+                        .HasColumnName("Description")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Type")
                         .HasColumnType("TEXT");
