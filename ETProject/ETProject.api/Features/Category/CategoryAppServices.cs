@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using ETProject.api.Features.Interfaces;
@@ -28,9 +29,29 @@ namespace ETProject.api.Features.Category
 
             if (created)
                 await UnitOfWork.CompleteAsync();
-
             //return new CategoryDto() { Id = newCategory.Id, Description = newCategory.Description, Type = newCategory.Type };
             return mapper.Map<CategoryDto>(newCategory);
+        }
+
+        public async Task<IEnumerable<CategoryDto>> GetAllCategory()
+        {
+        
+            IEnumerable<Category> categoriesDB = await categoryRepository.GetAsnc();
+            IEnumerable<CategoryDto> categoriesDto = mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDto>>(categoriesDB);
+            return categoriesDto;
+
+        }
+
+        public async Task<CategoryDto> DeleteCategory(int id){
+            Category category = await categoryRepository.GetByIdAsync(id);
+            if (category != null){
+                categoryRepository.DeleteAsync(category);
+                await UnitOfWork.CompleteAsync();
+
+            }
+                
+
+            return mapper.Map<CategoryDto>(category);
         }
 
 

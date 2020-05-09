@@ -14,11 +14,30 @@ namespace ETProject.api.Features.Category
 
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetAllCategory(){
+            return  Ok(await categoryAppServices.GetAllCategory());
+        }
+
+
         [HttpPost]
         public async Task<ActionResult> AddCategory([FromBody]CategoryDto request){
             return Ok(await categoryAppServices.AddCategory(request));
         }
 
-        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCategory(int id)
+        {
+
+            CategoryDto category = await categoryAppServices.DeleteCategory(id);
+            if (category != null)
+                return Ok();
+
+            return NotFound($"El id: {id} doesnt exist");
+        }
+
+
+
+
     }
 }
