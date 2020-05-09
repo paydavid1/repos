@@ -11,7 +11,7 @@ namespace ETProject.api.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-                migrationBuilder.DropTable("Categories");
+               
         }
     }
 }

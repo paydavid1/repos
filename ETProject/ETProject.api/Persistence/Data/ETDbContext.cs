@@ -9,7 +9,9 @@ namespace ETProject.api.Persistence.Data
         
         public ETDbContext(DbContextOptions<ETDbContext> options) : base(options) {}
 
-        public DbSet<Category> Categories { get; set; }          
+        public DbSet<Category> Categories { get; set; }    
+        
+              
 
     }
 }

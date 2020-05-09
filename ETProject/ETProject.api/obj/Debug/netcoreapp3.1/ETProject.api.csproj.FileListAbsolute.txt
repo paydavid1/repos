@@ -59,3 +59,5 @@ C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1
 C:\Users\dbenavides\source\repos\ETProject\ETProject.api\obj\Debug\netcoreapp3.1\ETProject.api.genruntimeconfig.cache
 C:\Users\dbenavides\source\repos\ETProject\ETProject.api\bin\Debug\netcoreapp3.1\dotnet-ef.dll
 C:\Users\dbenavides\source\repos\ETProject\ETProject.api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\dbenavides\source\repos\ETProject\ETProject.api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
