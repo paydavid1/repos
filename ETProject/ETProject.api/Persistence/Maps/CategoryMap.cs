@@ -10,8 +10,9 @@ namespace ETProject.api.Persistence.Maps
         {
             builder.ToTable("Categories");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("Id").HasColumnType("int").ValueGeneratedOnAdd();
-            builder.Property(x => x.Description).HasColumnName("Description").HasColumnType("varchar(50)").IsRequired(true);    
+            builder.Property(x => x.Id).HasColumnName("Id").HasColumnType("INTEGER").ValueGeneratedOnAdd();
+            builder.Property(x => x.Description).HasColumnName("Description").HasColumnType("TEXT").IsRequired(true);
+            builder.Property(x => x.Type).HasColumnName("Type").HasColumnType("NUMERIC").IsRequired(true);    
         }
     }
 }

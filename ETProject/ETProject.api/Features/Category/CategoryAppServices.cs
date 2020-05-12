@@ -42,6 +42,18 @@ namespace ETProject.api.Features.Category
 
         }
 
+        public async Task<CategoryDto> UpdateCategorAsync(CategoryDto categoryDto){
+            Category category  =  await categoryRepository.GetByIdAsync(categoryDto.Id);
+            if (category != null)
+            {
+                mapper.Map(categoryDto,category);
+                categoryRepository.UpdateAsync(category);
+                await UnitOfWork.CompleteAsync();
+            }
+
+            return mapper.Map<CategoryDto>(category);
+        }
+
         public async Task<CategoryDto> DeleteCategory(int id){
             Category category = await categoryRepository.GetByIdAsync(id);
             if (category != null){
@@ -52,6 +64,13 @@ namespace ETProject.api.Features.Category
                 
 
             return mapper.Map<CategoryDto>(category);
+        }
+
+        public async Task<CategoryDto> GetByIdAsync(int id){
+            Category category = await categoryRepository.GetByIdAsync(id);
+            return mapper.Map<CategoryDto>(category);
+
+
         }
 
 

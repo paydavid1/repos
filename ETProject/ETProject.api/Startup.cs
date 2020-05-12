@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ETProject.api.Features.Category;
 using ETProject.api.Features.Interfaces;
+using ETProject.api.Features.User;
 using ETProject.api.Persistence.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,7 +41,9 @@ namespace ETProject.api
             services.AddScoped(typeof(IUnitOfWork),typeof(UnitOfWork));
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddScoped(typeof(ICategoryRepository),typeof(CategoryRepository)); 
+            services.AddScoped(typeof(IAuthRepository),typeof(AuthRepository)); 
             services.AddScoped(typeof(CategoryAppServices)); 
+            services.AddScoped(typeof(AuthAppServices));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
