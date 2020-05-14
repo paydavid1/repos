@@ -32,6 +32,7 @@ namespace ETProject.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<ETDbContext>(options =>
                 {
@@ -55,8 +56,10 @@ namespace ETProject.api
             }
 
             //app.UseHttpsRedirection();
-
+            
             app.UseRouting();
+
+            app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

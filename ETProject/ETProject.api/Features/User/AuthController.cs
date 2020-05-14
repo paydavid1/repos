@@ -34,7 +34,7 @@ namespace ETProject.api.Features.User
 
         }
 
-        [HttpGet("login")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(UserDto userDto)
         {
 
