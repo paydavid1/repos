@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ETProject.api.Features.Category
+namespace ETProject.api.Features.Categorys
 {
     public class Category
     {

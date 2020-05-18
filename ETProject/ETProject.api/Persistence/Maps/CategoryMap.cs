@@ -1,4 +1,4 @@
-using ETProject.api.Features.Category;
+using ETProject.api.Features.Categorys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

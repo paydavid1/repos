@@ -1,4 +1,4 @@
-namespace ETProject.api.Features.Category
+namespace ETProject.api.Features.Categorys
 {
     public class CategoryDto
     {

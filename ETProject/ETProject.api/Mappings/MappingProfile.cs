@@ -1,5 +1,5 @@
 using AutoMapper;
-using ETProject.api.Features.Category;
+using ETProject.api.Features.Categorys;
 using ETProject.api.Features.User;
 
 namespace ETProject.api.Mappings

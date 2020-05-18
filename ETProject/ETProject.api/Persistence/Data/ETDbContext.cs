@@ -1,5 +1,5 @@
 using System.Reflection;
-using ETProject.api.Features.Category;
+using ETProject.api.Features.Categorys;
 using ETProject.api.Features.User;
 using ETProject.api.Persistence.Maps;
 using Microsoft.EntityFrameworkCore;

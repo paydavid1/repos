@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ETProject.api.Features.Category
+namespace ETProject.api.Features.Categorys
 {
     [ApiController]
     [Route("/api/[controller]/")]

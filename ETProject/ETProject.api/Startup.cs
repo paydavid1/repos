@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
-using ETProject.api.Features.Category;
+using ETProject.api.Features.Categorys;
 using ETProject.api.Features.Interfaces;
 using ETProject.api.Features.User;
 using ETProject.api.Helpers;

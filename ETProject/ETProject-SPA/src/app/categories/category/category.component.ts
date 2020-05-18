@@ -54,7 +54,7 @@ export class CategoryComponent implements OnInit {
     this.category.id = this.categoryForm.get('id').value;
     this.category.description = this.categoryForm.get('description').value;
     this.category.type = 'true' === this.categoryForm.get('type').value;
-    if (this.id > 0) {     
+    if (this.id > 0) {
       console.log(this.category);
       this.categoryService.updateCategory(this.category).subscribe(next => {
         this.category = next;
