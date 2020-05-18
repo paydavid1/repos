@@ -16,8 +16,8 @@
           <td>{{cat.description}}</td>
           <td>{{cat.type}}</td>
           <td>
-            <button type="button" class="btn btn-primary disabled mr-2" (click)="onEditRecipe()">Update</button>
-            <button type="button" class="btn btn-danger disabled">Delete</button>
+            <button type="button" class="btn btn-primary disabled mr-2" (click)="onEditRecipe(cat.id)">Update</button>
+            <button type="button" class="btn btn-danger disabled" (click)="onDelete(cat.id)">Delete</button>
           </td>
 
         </tr>

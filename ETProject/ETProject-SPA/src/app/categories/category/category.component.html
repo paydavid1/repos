@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1>Add Category</h1>
+  <h1>{{title}}</h1>
   <div class="container">
     <form [formGroup]='categoryForm' (ngSubmit)="onSubmit()">
       <div class="row">
@@ -34,11 +34,11 @@
             type="submit"
             class="btn btn-success mr-2"
             [disabled]="!categoryForm.valid">Save</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+          <button type="button" class="btn btn-danger mr-2" (click)="onCancel()">Cancel</button>
+          <button *ngIf = 'category.id === 0'  type="button" class="btn btn-danger mr-2" (click)="onReset()">Clean</button>
         </div>
       </div>
     </form>  
   </div>
 </div>
 
-{{categoryForm.valid}}

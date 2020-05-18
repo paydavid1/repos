@@ -54,11 +54,5 @@ namespace ETProject.api.Features.Category
 
             return NotFound($"El id: {id} doesnt exist");
         }
-
-
-
-
-
-
     }
 }

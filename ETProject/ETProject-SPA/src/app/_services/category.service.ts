@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { CategorieDto } from '../_dto/CategorieDto';
 
 const httpOption = {
@@ -25,10 +25,18 @@ export class CategoryService {
   }
 
   getCategory(id: number): Observable<CategorieDto>{
-    return this.http.get<CategorieDto>(this.baseUrl + id, httpOption);
+    return this.http.get<CategorieDto>(this.baseUrl + 'getbyid/' + id, httpOption);
   }
   addCategory(categoy: CategorieDto){
     return this.http.post(this.baseUrl + 'new/', categoy);
+  }
+
+  removeCategory(id: number){
+    return this.http.delete(this.baseUrl + 'delete/' + id);
+  }
+  updateCategory(categoy: CategorieDto){
+    console.log(categoy);
+    return this.http.put<CategorieDto>(this.baseUrl + 'update/', categoy);
   }
 }
 

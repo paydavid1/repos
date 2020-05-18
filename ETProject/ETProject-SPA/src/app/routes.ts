@@ -17,7 +17,7 @@ export const appRoutes: Routes = [
             {path: 'categories', component: CategoriesComponent},
             {path: 'transactions', component: TransactionsComponent},
             {path: 'balance', component: BalanceComponent},
-            {path: 'addCategory', component: CategoryComponent}
+            {path: 'saveCategory/:id', component: CategoryComponent, data : {type : 'saveCategory'}}
         ]
     },
     {path: '**', redirectTo: '', pathMatch: 'full'},
