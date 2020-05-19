@@ -1,3 +1,38 @@
-<p>
-  transactions works!
-</p>
+<div class="container-fluid">
+  
+  <div>
+    <h1>Transactions</h1>
+    <button type="button" class="btn btn-success" (click)="onAddTransaction()">Add Transaction</button>
+  </div>
+  
+  <br>
+  <div class="table-responsive-sm">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date</th>
+          <th scope="col">Total</th>
+          <th scope="col">Type</th>
+          <th scope="col">Actions</th>
+          
+        </tr>
+        <tr *ngFor="let tra of transactions">
+          <td>{{tra.id}}</td>
+          <td>{{tra.description}}</td>
+          <td>{{tra.dateTransaction}}</td>
+          <td>{{tra.total}}</td>
+          <td>{{tra.categoryDescription}}</td>
+          <td>
+            <button type="button" class="btn btn-primary disabled mr-2" (click)="onEditTransaction(tra.id)">Update</button>
+            <button type="button" class="btn btn-danger disabled" (click)="onDelete(tra.id)">Delete</button>
+          </td>
+        </tr>
+      </thead>
+  
+    </table>
+
+  </div>
+
+</div>

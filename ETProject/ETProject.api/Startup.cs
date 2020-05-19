@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ETProject.api.Features.Categorys;
 using ETProject.api.Features.Interfaces;
-using ETProject.api.Features.User;
+using ETProject.api.Features.Transactions;
+using ETProject.api.Features.Users;
 using ETProject.api.Helpers;
 using ETProject.api.Persistence.Data;
 using Microsoft.AspNetCore.Builder;
@@ -40,15 +41,17 @@ namespace ETProject.api
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<ETDbContext>(options =>
                 {
-                    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 }, ServiceLifetime.Scoped);
 
             services.AddScoped(typeof(IUnitOfWork),typeof(UnitOfWork));
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddScoped(typeof(ICategoryRepository),typeof(CategoryRepository)); 
             services.AddScoped(typeof(IAuthRepository),typeof(AuthRepository)); 
+            services.AddScoped(typeof(ITransactionRepository),typeof(TransactionRepository)); 
             services.AddScoped(typeof(CategoryAppServices)); 
             services.AddScoped(typeof(AuthAppServices));
+            services.AddScoped(typeof(TransactionAppServices));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,6 +18,10 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { BalanceComponent } from './balance/balance.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CategoryComponent } from './categories/category/category.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TransactionComponent } from './transactions/Transaction/transaction/transaction.component';
+import { EgresosComponent } from './balance/Egresos/egresos/egresos.component';
+import { IngresosComponent } from './balance/Ingresos/ingresos/ingresos.component';
 
 
 @NgModule({
@@ -29,7 +33,10 @@ import { CategoryComponent } from './categories/category/category.component';
       CategoriesComponent,
       CategoryComponent,
       TransactionsComponent,
-      BalanceComponent
+      TransactionComponent,
+      BalanceComponent,
+      EgresosComponent,
+      IngresosComponent
    ],
    imports: [
       BrowserModule,
@@ -38,6 +45,7 @@ import { CategoryComponent } from './categories/category/category.component';
       ReactiveFormsModule,
       HttpClientModule,
       BsDropdownModule.forRoot(),
+      BsDatepickerModule.forRoot(),
       ModalModule.forRoot(),
       BrowserAnimationsModule,
       RouterModule.forRoot(appRoutes),

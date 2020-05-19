@@ -5,6 +5,9 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { BalanceComponent } from './balance/balance.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { CategoryComponent } from './categories/category/category.component';
+import { TransactionComponent } from './transactions/Transaction/transaction/transaction.component';
+import { IngresosComponent } from './balance/Ingresos/ingresos/ingresos.component';
+import { EgresosComponent } from './balance/Egresos/egresos/egresos.component';
 
 
 export const appRoutes: Routes = [
@@ -17,7 +20,10 @@ export const appRoutes: Routes = [
             {path: 'categories', component: CategoriesComponent},
             {path: 'transactions', component: TransactionsComponent},
             {path: 'balance', component: BalanceComponent},
-            {path: 'saveCategory/:id', component: CategoryComponent, data : {type : 'saveCategory'}}
+            {path: 'saveCategory/:id', component: CategoryComponent, data : {type : 'saveCategory'}},
+            {path: 'saveTransaction/:id', component: TransactionComponent, data : {type : 'saveTransaction'}},
+            {path: 'ingresos', component: IngresosComponent},
+            {path: 'egresos', component: EgresosComponent}
         ]
     },
     {path: '**', redirectTo: '', pathMatch: 'full'},

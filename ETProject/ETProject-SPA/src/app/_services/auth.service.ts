@@ -37,4 +37,10 @@ constructor(private httpClient: HttpClient   ) { }
     const token = localStorage.getItem('token');
     return !this.helper.isTokenExpired(token);
   }
+
+  getUserId(): number {
+    const token = localStorage.getItem('token');
+    this.decodedToken = this.helper.decodeToken(token);
+    return +this.decodedToken?.nameid;
+  }
 }

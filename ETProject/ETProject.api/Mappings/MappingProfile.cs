@@ -1,6 +1,7 @@
 using AutoMapper;
 using ETProject.api.Features.Categorys;
-using ETProject.api.Features.User;
+using ETProject.api.Features.Transactions;
+using ETProject.api.Features.Users;
 
 namespace ETProject.api.Mappings
 {
@@ -13,6 +14,9 @@ namespace ETProject.api.Mappings
 
             CreateMap<User,UserDto>();
             CreateMap<UserDto,User>();
+
+            CreateMap<Transaction,TransactionDto>();
+            CreateMap<TransactionDto,Transaction>();
         }
     }
 }

@@ -55,8 +55,7 @@ export class CategoryComponent implements OnInit {
     this.category.description = this.categoryForm.get('description').value;
     this.category.type = 'true' === this.categoryForm.get('type').value;
     if (this.id > 0) {
-      console.log(this.category);
-      this.categoryService.updateCategory(this.category).subscribe(next => {
+        this.categoryService.updateCategory(this.category).subscribe(next => {
         this.category = next;
         this.alertifyService.success('Category updated Succesfully');
         this.router.navigate(['categories']);
