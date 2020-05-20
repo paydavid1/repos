@@ -30,7 +30,6 @@ export class CategoriesComponent implements OnInit {
       this.categories = categories;
       this.categoriesReturn = this.categories.slice(0, 5);
       this.countCategories = this.categories.length;
-      console.log(this.countCategories);
     }, (error?: any) => {
       this.alertify.error(error);
     });
@@ -56,7 +55,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   pageChanged(event: PageChangedEvent): void {
-    event.itemsPerPage = 5;
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
     this.categoriesReturn = this.categories.slice(startItem, endItem);
