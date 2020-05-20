@@ -13,15 +13,15 @@ namespace ETProject.api.Features.Transactions
         {
         }
 
-        public async Task<IEnumerable<Transaction>> GetAsncInclude()
+        public async Task<IEnumerable<Transaction>> GetAsncInclude(int id)
         {
-            return await UnitOfWork.Context.Transactions.Include(x => x.Category ).ToListAsync();
+            return await UnitOfWork.Context.Transactions.Include(x => x.Category ).Where(x => x.UserId == id).ToListAsync();
         }
 
-        public async Task<IEnumerable<Transaction>> GetAsncIncludeByMonthByType(int month, bool type)
+        public async Task<IEnumerable<Transaction>> GetAsncIncludeByMonthByType(int idUser, int month, bool type)
         {
               return await UnitOfWork.Context.Transactions.Include(x => x.Category )
-              .Where(x => x.Category.Type == type && x.DateTransaction.Month == month ).ToListAsync();
+              .Where(x => x.Category.Type == type && x.DateTransaction.Month == month && x.UserId == idUser ).ToListAsync();
         }
     }
 }

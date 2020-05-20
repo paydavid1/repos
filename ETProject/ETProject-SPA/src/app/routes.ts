@@ -18,7 +18,7 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: 'categories', component: CategoriesComponent},
-            {path: 'transactions', component: TransactionsComponent},
+            {path: 'transactions/:id', component: TransactionsComponent},
             {path: 'balance', component: BalanceComponent},
             {path: 'saveCategory/:id', component: CategoryComponent, data : {type : 'saveCategory'}},
             {path: 'saveTransaction/:id', component: TransactionComponent, data : {type : 'saveTransaction'}},

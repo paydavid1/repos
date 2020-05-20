@@ -14,13 +14,18 @@ namespace ETProject.api.Features.Transactions
 
         }
 
-        [HttpGet("/api/Transaction/getall/", Name ="GetAllTransaction")]
-        public async Task<ActionResult> GetAllTransaction(){
-            return  Ok(await transactionAppServices.GetAllTransaction());
+        [HttpGet("/api/Transaction/getall/{id}", Name ="GetAllTransaction")]
+        public async Task<ActionResult> GetAllTransaction(int id){
+            return  Ok(await transactionAppServices.GetAllTransaction(id));
         }
-        [HttpGet("/api/Transaction/getbymonthtype/", Name ="GetAllTransactionByMonthByType")]
-        public async Task<ActionResult> GetAllTransactionByMonthByType(TransactionBalanceDto request){
-            return  Ok(await transactionAppServices.GetByMonthByType(request.month,request.type));
+        [HttpGet("/api/Transaction/{type}/{month}/{userId}/", Name ="GetAllTransactionByMonthByType")]
+        public async Task<ActionResult> GetAllTransactionByMonthByType(bool type, int month, int userId){
+            return  Ok(await transactionAppServices.GetByMonthByType(userId,month,type));
+        }
+
+        [HttpGet("/api/Transaction/{month}/{userId}/", Name ="GetAllTransactionByMonth")]
+        public async Task<ActionResult> GetAllTransactionByMonth(int month,int userId){
+            return  Ok(await transactionAppServices.GetBalance(userId,month));
         }
 
         [HttpGet("/api/Transaction/getbyid/{id}", Name ="GetByIdTransaction")]

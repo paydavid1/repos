@@ -37,7 +37,7 @@
             id="categoyDescription"
             formControlName="categoryDescription"
             class="form-control" >
-              <option *ngFor="let cat of categories" [value]="cat.id" >{{cat.description}}</option>              
+             <option *ngFor="let cat of categories; let i = index" [value]="categories[i].id" >{{categories[i].description}}</option>            
             </select>
           </div>
         </div>
@@ -61,7 +61,7 @@
             class="btn btn-success mr-2"
             [disabled]="!transactionForm.valid">Save</button>
           <button type="button" class="btn btn-danger mr-2" (click)="onCancel()">Cancel</button>
-          <button *ngIf = 'transaction.id === 0'  type="button" class="btn btn-danger mr-2" (click)="onReset()">Clean</button>
+          <button *ngIf = 'transaction.id === 0'  type="button" class="btn btn-info mr-2" (click)="onReset()">Clean</button>
         </div>
       </div>
     </form>  

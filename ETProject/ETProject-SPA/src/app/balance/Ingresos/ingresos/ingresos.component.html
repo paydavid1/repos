@@ -1,3 +1,36 @@
-<p>
-  ingresos works!
-</p>
+<div class="container-fluid">
+  <div>
+    <h1>Ingresos</h1>
+   
+  </div>
+  <div class="row">
+
+    <br>
+    <div class="table-responsive-sm">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Total</th>
+            
+          </tr>
+          <tr *ngFor="let ing of transactions">
+            <td>{{ing.id}}</td>
+            <td>{{ing.description}}</td>
+            <td>{{ing.dateTransaction}}</td>
+            <td>{{ing.total}}</td>
+  
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td>Total Ingresos: {{total}}</td>
+          </tr>
+        </tfoot>
+    
+      </table>
+    
+  </div>
+</div>

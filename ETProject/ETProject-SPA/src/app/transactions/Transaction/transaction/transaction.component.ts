@@ -19,6 +19,8 @@ export class TransactionComponent implements OnInit {
   transaction: TransactionDto = {id: 0, description: '', dateTransaction: new Date(), total: 0,
                                     categoryId: 0, userId: 0, categoryDescription: '' };
   categories: CategorieDto[];
+  selectedCategory;
+
   title =  'Add Transaction';
   id: number = this.transaction.id;
 
@@ -32,7 +34,6 @@ export class TransactionComponent implements OnInit {
               private authServices: AuthService) { }
 
   ngOnInit() {
-    this.loadCategories();
     this.id = this.route.snapshot.params.id;
     this.transactionForm = new FormGroup({
       id:  new FormControl(this.transaction.id),
@@ -43,10 +44,7 @@ export class TransactionComponent implements OnInit {
       userId: new FormControl(0, Validators.required),
       categoryDescription: new FormControl(this.categories, Validators.required)
     });
-    if (this.id > 0){
-      this.getTransactionById(this.id);
-      this.title = 'Edit Transaction';
-    }
+    this.loadCategories();
   }
 
   getTransactionById(id){
@@ -57,14 +55,19 @@ export class TransactionComponent implements OnInit {
   }
 
   setTransactionForm(){
-    console.log(this.transaction);
+    this.selectedCategory = this.categories.findIndex(t => t.id === this.transaction.categoryId);
     this.transactionForm.setValue(this.transaction);
-    console.log(this.transactionForm);
+    this.transactionForm.controls.categoryDescription.patchValue(this.categories[this.selectedCategory].id);
   }
 
   loadCategories(){
     this.categoryService.getCategories().subscribe((categories: CategorieDto[]) => {
       this.categories = categories;
+      this.transactionForm.controls.categoryDescription.patchValue(this.categories[0].id);
+      if (this.id > 0){
+        this.getTransactionById(this.id);
+        this.title = 'Edit Transaction';
+      }
     }, (error?: any) => {
       this.alertify.error(error);
     });
@@ -84,14 +87,14 @@ export class TransactionComponent implements OnInit {
       this.transactionService.updateTransaction(this.transaction).subscribe(next => {
         this.transaction = next;
         this.alertify.success('Transaction updated Succesfully');
-        this.router.navigate(['transactions']);
+        this.router.navigate(['transactions/' + this.transaction.userId]);
       }, error => {
         this.alertify.warning(error);
       });
     } else {
       this.transactionService.addTransaction(this.transaction).subscribe(() => {
         this.alertify.success('Transaction added Succesfully');
-        this.router.navigate(['transactions']);
+        this.router.navigate(['transactions/' + this.transaction.userId]);
       }, error => {
         this.alertify.warning(error);
         this.onReset();

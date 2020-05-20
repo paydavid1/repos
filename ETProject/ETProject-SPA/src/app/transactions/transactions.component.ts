@@ -3,6 +3,7 @@ import { TransactionDto } from '../_dto/TransactionDto';
 import { TransactionService } from '../_services/transaction.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-transactions',
@@ -12,17 +13,20 @@ import { Router } from '@angular/router';
 export class TransactionsComponent implements OnInit {
 
   transactions: TransactionDto[];
+  userId: number;
 
   constructor(private transactionService: TransactionService,
               private alertify: AlertifyService,
-              private router: Router) { }
+              private router: Router,
+              private authServices: AuthService) { }
 
   ngOnInit() {
+    this.userId = this.authServices.getUserId();
     this.loadTransactions();
   }
 
   loadTransactions(){
-    this.transactionService.getTransactions().subscribe((transactions: TransactionDto[]) => {
+    this.transactionService.getTransactions(this.userId).subscribe((transactions: TransactionDto[]) => {
       this.transactions = transactions;
     }, (error?: any) => {
       this.alertify.error(error);

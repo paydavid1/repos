@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ETProject.api.Features.Interfaces;
@@ -35,15 +36,17 @@ namespace ETProject.api.Features.Transactions
             return mapper.Map<TransactionDto>(newTransaction);
         }
 
-        public async Task<IEnumerable<TransactionDto>> GetAllTransaction()
+        public async Task<IEnumerable<TransactionDto>> GetAllTransaction(int id)
         {
         
            // IEnumerable<Transaction> transactionsDB = await transactionRepository.GetAsnc();
-            IEnumerable<Transaction> transactionsDB = await transactionRepository.GetAsncInclude();
+            IEnumerable<Transaction> transactionsDB = await transactionRepository.GetAsncInclude(id);
             IEnumerable<TransactionDto> transactionsDto = mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionDto>>(transactionsDB);
             return transactionsDto;
 
         }
+
+       
 
         public async Task<TransactionDto> UpdateCategorAsync(TransactionDto TransactionDto){
             Transaction Transaction  =  await transactionRepository.GetByIdAsync(TransactionDto.Id);
@@ -71,11 +74,18 @@ namespace ETProject.api.Features.Transactions
             return mapper.Map<TransactionDto>(transaction);
         }
 
-        public async Task<IEnumerable<TransactionDto>> GetByMonthByType(int month, bool type){
-            IEnumerable<Transaction> transactionsDB = await transactionRepository.GetAsncIncludeByMonthByType(month,type);
+        public async Task<IEnumerable<TransactionDto>> GetByMonthByType(int idUser, int month, bool type){
+            IEnumerable<Transaction> transactionsDB = await transactionRepository.GetAsncIncludeByMonthByType(idUser,month,type);
             IEnumerable<TransactionDto> transactionsDto = mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionDto>>(transactionsDB);
             return transactionsDto;
             
+        }
+
+        public async Task<decimal> GetBalance(int idUser, int month){
+            var ingresos = await GetByMonthByType(idUser,month,false);
+            var egresos = await GetByMonthByType(idUser,month,true);
+
+            return ingresos.Sum(i => (decimal)i.Total)  - egresos.Sum(e => (decimal)e.Total);
         }
     }
 }

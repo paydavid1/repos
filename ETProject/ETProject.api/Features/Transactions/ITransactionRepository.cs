@@ -6,7 +6,8 @@ namespace ETProject.api.Features.Transactions
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {
-         Task<IEnumerable<Transaction>> GetAsncInclude();
-         Task<IEnumerable<Transaction>> GetAsncIncludeByMonthByType(int month, bool type  );
+         Task<IEnumerable<Transaction>> GetAsncInclude(int id);
+         Task<IEnumerable<Transaction>> GetAsncIncludeByMonthByType(int idUser, int month, bool type);
+         
     }
 }

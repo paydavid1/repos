@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TransactionDto } from '../_dto/TransactionDto';
 import { Observable } from 'rxjs/internal/Observable';
+import {  BalanceDto } from '../_dto/BalanceDto';
 
 
 const httpOption = {
@@ -20,10 +21,16 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-  getTransactions(): Observable<TransactionDto[]>{
+  getTransactionsByMonthByType(balance: BalanceDto): Observable<TransactionDto[]>{
+    return this.http.get<TransactionDto[]>(this.baseUrl + balance.type + '/' + balance.month + '/' + balance.userId, httpOption);
+  }
 
-    return this.http.get<TransactionDto[]>(this.baseUrl + 'getall/', httpOption);
+  getBalance(balance: BalanceDto): Observable<number>{
+    return this.http.get<number>(this.baseUrl + balance.month + '/' + balance.userId, httpOption);
+  }
 
+  getTransactions(id: number): Observable<TransactionDto[]>{
+    return this.http.get<TransactionDto[]>(this.baseUrl + 'getall/' + id, httpOption);
   }
 
   getTransaction(id: number): Observable<TransactionDto>{

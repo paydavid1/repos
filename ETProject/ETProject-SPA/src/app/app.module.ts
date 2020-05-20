@@ -22,6 +22,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TransactionComponent } from './transactions/Transaction/transaction/transaction.component';
 import { EgresosComponent } from './balance/Egresos/egresos/egresos.component';
 import { IngresosComponent } from './balance/Ingresos/ingresos/ingresos.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 @NgModule({
@@ -47,8 +48,9 @@ import { IngresosComponent } from './balance/Ingresos/ingresos/ingresos.componen
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
       ModalModule.forRoot(),
+      PaginationModule.forRoot(),
       BrowserAnimationsModule,
-      RouterModule.forRoot(appRoutes),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
