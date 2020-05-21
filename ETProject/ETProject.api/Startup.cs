@@ -33,16 +33,31 @@ namespace ETProject.api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureDevelopmentServices(IServiceCollection services){
+            services.AddDbContext<ETDbContext>(options =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                }, ServiceLifetime.Scoped);
+
+                ConfigureServices(services);
+        }
+
+        public void ConfigureProductionServices(IServiceCollection services){
+            services.AddDbContext<ETDbContext>(options =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                }, ServiceLifetime.Scoped);
+
+                ConfigureServices(services);
+        }
+
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddCors();
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<ETDbContext>(options =>
-                {
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                }, ServiceLifetime.Scoped);
+            
 
             services.AddScoped(typeof(IUnitOfWork),typeof(UnitOfWork));
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
@@ -61,30 +76,35 @@ namespace ETProject.api
             {
                 app.UseDeveloperExceptionPage();
             }else{
-                app.UseExceptionHandler(builder => {
-                    builder.Run(async context => {
-                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                        var error = context.Features.Get<IExceptionHandlerFeature>();
-                        if (error != null)
-                        {
-                            context.Response.AddApplicationError(error.Error.Message);
-                            await context.Response.WriteAsync(error.Error.Message);
-                        }  
-                    });
-                });
+                // app.UseExceptionHandler(builder => {
+                //     builder.Run(async context => {
+                //         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                //         var error = context.Features.Get<IExceptionHandlerFeature>();
+                //         if (error != null)
+                //         {
+                //             context.Response.AddApplicationError(error.Error.Message);
+                //             await context.Response.WriteAsync(error.Error.Message);
+                //         }  
+                //     });
+                // });
+                app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
-            
+            app.UseHttpsRedirection();
+            app.UseDeveloperExceptionPage();
             app.UseRouting();
 
             app.UseCors(x=>x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }
