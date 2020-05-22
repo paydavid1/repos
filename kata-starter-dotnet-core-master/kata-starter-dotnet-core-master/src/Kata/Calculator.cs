@@ -1,4 +1,6 @@
-﻿namespace Kata
+﻿using System.Linq;
+
+namespace Kata
 {
     public class Calculator
     {
@@ -9,12 +11,8 @@
                 return 0;
             }
 
-            var array =s.Split(',');
-            if (array.Length > 1)
-            {
-                return int.Parse(array[0]) + int.Parse(array[1]);
-            }
-            return 3;
+            var numbers =s.Split(',').Select(int.Parse);
+            return numbers.Sum();
 
         }
     }
