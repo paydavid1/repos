@@ -4,7 +4,11 @@
     {
         public int Sum()
         {
-            return -1;
+            return 0;
+        }
+        public int Sum(string s)
+        {
+            return 0;
         }
     }
 }
