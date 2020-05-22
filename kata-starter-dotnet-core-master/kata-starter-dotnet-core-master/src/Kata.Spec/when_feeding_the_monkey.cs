@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Machine.Specifications;
 
 namespace Kata.Spec
@@ -69,11 +70,48 @@ namespace Kata.Spec
         private static Calculator _systemUnderTest;
         private static int _result;
     }
+
+    public class when_multiple_number_custom_single_character    
+
+    {
+
+        Establish _context = () => { _systemUnderTest = new Calculator(); };
+
+        Because of = () => { _result = _systemUnderTest.Sum("//;\n1;2"); };
+
+        It should_do_something = () => { _result.Should().Be(3); };
+        private static Calculator _systemUnderTest;
+        private static int _result;
+    }
+
+
+    public class when_negative_number
+
+    {
+        Establish _context = () => { _systemUnderTest = new Calculator(); };
+
+        Because of = () => _result = Catch.Exception(() => { _systemUnderTest.Sum("-1"); });
+
+        private It should_throw_exception = () => { _result.Message.Should().Contain("negatives not allowed: -1"); };
+        private static Calculator _systemUnderTest;
+        private static Exception _result;
+    }
+
+    public class when_multiple_negative_number
+
+    {
+
+        Establish _context = () => { _systemUnderTest = new Calculator(); };
+
+        Because of = () => _result = Catch.Exception(() => { _systemUnderTest.Sum("-1,-2,3,-4,0"); });
+
+        private It should_throw_exception = () => { _result.Message.Should().Contain("negatives not allowed: -1,-2,-4"); };
+        private static Calculator _systemUnderTest;
+        private static Exception _result;
+
+    }
+    
    
-    // Given the user input is multiple numbers with new line and comma delimiters when calculating the sum then it should return the sum of all the numbers. (example "1\n2,3" should equal 6)
-    // Given the user input is multiple numbers with a custom single-character delimiter when calculating the sum then it should return the sum of all the numbers. (example “//;\n1;2” should return 3)
-    // Given the user input contains one negative number when calculating the sum then it should throw an exception "negatives not allowed: x" (where x is the negative number).
-    // Given the user input contains multiple negative numbers mixed with positive numbers when calculating the sum then it should throw an exception "negatives not allowed: x, y, z" (where x, y, z are only the negative numbers).
     // Given the user input contains numbers larger than 1000 when calculating the sum it should only sum the numbers less than 1001. (example 2 + 1001 = 2)
     // Given the user input is multiple numbers with a custom multi-character delimiter when calculating the sum then it should return the sum of all the numbers. (example: “//[]\n12***3” should return 6)
     // Given the user input is multiple numbers with multiple custom delimiters when calculating the sum then it should return the sum of all the numbers. (example “//[][%]\n12%3” should return 6)
